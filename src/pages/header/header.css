@@ -1,0 +1,125 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  width: 60px;
+  height: auto;
+}
+
+.header-text h1 {
+  font-size: 20px;
+  margin: 0;
+  color: #222;
+}
+
+.header-text p {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-phones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-icon {
+  color: #444;
+  font-size: 18px;
+}
+
+.header-phones a {
+  display: block;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 22px;
+}
+
+.social-icons a {
+  color: #555;
+  transition: 0.3s;
+}
+
+.social-icons a.whatsapp:hover {
+  color: #25D366;
+}
+
+.social-icons a.instagram:hover {
+  color: #E4405F;
+}
+
+.order-button {
+  background: #ff6600;
+  border: none;
+  padding: 10px 22px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.order-button:hover {
+  background: #e55700;
+}
+
+.menu-button {
+  background: none;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.menu-button:hover {
+  background: #f5f5f5;
+}
+
+/* 📱 Адаптив */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .order-button {
+    width: 100%;
+  }
+}

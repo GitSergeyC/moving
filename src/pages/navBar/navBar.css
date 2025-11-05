@@ -1,0 +1,60 @@
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff6600;
+}
+
+/* 🔸 активная ссылка */
+.nav-link.active {
+  color: #ff6600;
+  font-weight: 600;
+}
+
+.nav-location {
+  color: #333;
+  border-left: 1px solid #ddd;
+  padding-left: 25px;
+  font-weight: 500;
+}
+
+/* 📱 Адаптив */
+@media (max-width: 768px) {
+  .subheader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .nav-location {
+    border-left: none;
+    padding-left: 0;
+    font-size: 14px;
+  }
+}
