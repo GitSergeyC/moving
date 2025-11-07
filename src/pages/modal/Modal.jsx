@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Modal.css";
+import "./modal.css";
 import { FaTimes } from "react-icons/fa";
 
 export default function Modal({ isOpen, onClose }) {
