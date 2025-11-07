@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./Bid.css";
+import "./bid.css";
 
 // импорт картинки
 import bidImage from "../../images/bid-photo.jpg";
