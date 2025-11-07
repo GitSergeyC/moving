@@ -9,13 +9,34 @@ export default function Bid() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Форма отправлена:", form);
-    setSuccess(true);
-    setForm({ name: "", phone: "", message: "" });
-    setTimeout(() => setSuccess(false), 4000);
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const response = await fetch("https://movinggo.onrender.com/send-message", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    const result = await response.json();
+    console.log("Ответ сервера:", result);
+
+    if (result.success) {
+      setSuccess(true);
+      setForm({ name: "", phone: "", message: "" });
+      setTimeout(() => setSuccess(false), 4000);
+    } else {
+      alert("Ошибка при отправке. Попробуйте снова.");
+    }
+  } catch (err) {
+    console.error("Ошибка сети:", err);
+    alert("Ошибка соединения с сервером.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <section className="bid-section">
