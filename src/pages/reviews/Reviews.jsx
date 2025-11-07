@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Reviews.css";
+import "./reviews.css";
 
 // Пути к твоим скриншотам
 import review4 from "/src/images/reviews/review1.png";
