@@ -1,11 +1,23 @@
+/* === Основной стиль === */
 .header {
+  position: fixed; /* Хедер всегда на экране */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Поверх всего */
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 60px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Чтобы контент под хедером не перекрывался */
+body {
+  padding-top: 80px; /* высота хедера */
 }
 
 .header-left {
@@ -35,8 +47,10 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  padding-right: 80px;
 }
 
+/* === Телефоны === */
 .header-phones {
   display: flex;
   align-items: center;
@@ -53,8 +67,14 @@
   text-decoration: none;
   color: #222;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
+.header-phones a:hover {
+  color: #0066ff;
+}
+
+/* === Соцсети === */
 .social-icons {
   display: flex;
   gap: 12px;
@@ -74,6 +94,7 @@
   color: #E4405F;
 }
 
+/* === Кнопки === */
 .order-button {
   background: #ff6600;
   border: none;
@@ -99,27 +120,75 @@
   cursor: pointer;
   color: #333;
   transition: all 0.3s;
+  z-index: 1001;
 }
 
 .menu-button:hover {
   background: #f5f5f5;
 }
 
-/* 📱 Адаптив */
-@media (max-width: 768px) {
+/* === Меню-гамбургер (мобильное) === */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background: #0066ff;
+  color: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 60px 30px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  color: #ffcc00;
+}
+
+/* === Адаптив === */
+@media (max-width: 900px) {
   .header {
-    flex-direction: column;
-    gap: 10px;
     padding: 10px 20px;
   }
 
   .header-right {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .header-right {
+    flex-wrap: nowrap;
+    padding-right: 20px;
   }
 
   .order-button {
-    width: 100%;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .header-phones {
+    display: none; /* скрываем телефоны, оставляем бургер */
   }
 }
