@@ -1,47 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./bid.css";
-
-// импорт картинки
 import bidImage from "../../images/bid-photo.jpg";
+import { sendFormData } from "../../utils/sendForm";
 
 export default function Bid() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    const response = await fetch("https://movinggo.onrender.com/send-message", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    const result = await response.json();
-    console.log("Ответ сервера:", result);
+    e.preventDefault();
+    const result = await sendFormData(form);
 
     if (result.success) {
       setSuccess(true);
       setForm({ name: "", phone: "", message: "" });
       setTimeout(() => setSuccess(false), 4000);
     } else {
-      alert("Ошибка при отправке. Попробуйте снова.");
+      alert(result.error);
     }
-  } catch (err) {
-    console.error("Ошибка сети:", err);
-    alert("Ошибка соединения с сервером.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   return (
     <section className="bid-section">
       <div className="bid-container">
-        {/* Левая часть — изображение */}
         <motion.div
           className="bid-image"
           initial={{ opacity: 0, x: -80 }}
@@ -51,7 +33,6 @@ export default function Bid() {
           <img src={bidImage} alt="Грузчики" />
         </motion.div>
 
-        {/* Правая часть — форма */}
         <motion.div
           className="bid-form-container"
           initial={{ opacity: 0, x: 80 }}
