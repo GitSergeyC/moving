@@ -2,7 +2,7 @@
 
 export async function sendFormData(formData) {
   try {
-    const response = await fetch("https://movingserver.vercel.app/send-message", {
+    const response = await fetch("https://server-main-4e5o.onrender.com/send-message", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
